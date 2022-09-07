@@ -1,7 +1,8 @@
+import React, {Component} from 'react';
 import {Field, reduxForm} from 'redux-form';
 
 //Component
-let InitForm = (props) => {
+const InitForm = (props) => {
   return (
     <div>
       <form action='"'>
@@ -19,23 +20,6 @@ let InitForm = (props) => {
   )
 };
 
-InitForm = reduxForm({
+export default reduxForm({
   form: 'initForm'
 })(InitForm);
-
-
-//Container
-function App() {
-  return (
-    <div>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <InitForm/>
-        </p>
-    </div>
-  );
-}
-
-export default App;
