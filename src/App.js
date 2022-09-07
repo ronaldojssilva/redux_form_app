@@ -1,23 +1,39 @@
-import logo from './logo.svg';
-import './App.css';
+import {Field, reduxForm} from 'redux-form';
 
+//Component
+let InitForm = (props) => {
+  return (
+    <div>
+      <form action='"'>
+         <div>
+          <label htmlFor='name'>Teste</label>
+          <Field
+             name='name'
+             placeholder='Entre your name'
+             type="text"
+             component="input"
+          />
+         </div>
+      </form>
+    </div>
+  )
+};
+
+InitForm = reduxForm({
+  form: 'initForm'
+})(InitForm);
+
+
+//Container
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div>
         <p>
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        <p>
+          <InitForm/>
+        </p>
     </div>
   );
 }
