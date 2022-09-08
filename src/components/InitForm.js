@@ -3,6 +3,34 @@ import {Field, reduxForm} from 'redux-form';
 import {connect} from 'react-redux';
 import {getInitialFetch} from './../actions';
 
+
+const renderField = ({
+  input,
+  label,
+  type,
+  meta: {touched, error, warning}
+}) => (
+  <div className='form-group'>
+     <label htmlFor=''>{label}</label>
+     <input {...input} placeholder={label} type={type} className="form-control"/>
+     {touched && (error && <span className='text-danger'>{error}</span>)}
+  </div>
+)
+
+const validate = (values) => {
+  const errors = {};
+  const {name} = values;
+
+  if (!name) {
+    errors.name = 'Required';
+  }
+
+  if (name && name.toString().length <= 2) {
+    errors.name = 'To Short';
+  }
+  return errors;
+}
+
 class InitForm extends Component{
   componentDidMount(){
      this.props.fetchInitial();
@@ -18,7 +46,7 @@ class InitForm extends Component{
                 name='name'
                 placeholder='Entre your name'
                 type="text"
-                component="input"
+                component={renderField}
                 className='form-control'
                 onChange={onChangeName}
             />
@@ -46,5 +74,6 @@ const mapDispatchToProps = (dispatch) => {
 export default connect(mapStateToProps, mapDispatchToProps) 
 (reduxForm({
   form: 'initForm',
-  enableReinitialize: true
+  enableReinitialize: true,
+  validate
 })(InitForm));
