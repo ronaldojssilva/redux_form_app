@@ -3,12 +3,20 @@ import InitForm from "../components/InitForm";
 //Container
 function App() {
   return (
-    <div>
+    <div className="col">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>
-          <InitForm/>
+          <div className="card">
+            <div className="card-header"> 
+              Card Header
+            </div>
+            <div className="card-body">
+               <div className="card-title">My First Redux Form</div>
+                <InitForm/>
+            </div>
+            <div className="card-footer">
+              <p>Card Footer</p>
+            </div>
+          </div>
         </p>
     </div>
   );

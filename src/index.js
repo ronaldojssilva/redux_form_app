@@ -12,7 +12,11 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <Provider store={store}>
     <React.StrictMode>
-      <App />
+      <div className='container'>
+        <div className='row'>
+          <App/>
+        </div>
+      </div>
     </React.StrictMode>
   </Provider>
 );
