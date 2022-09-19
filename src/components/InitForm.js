@@ -37,9 +37,9 @@ const validate = (values) => {
     errors.name = 'Required';
   }
 
-  if (name && name.toString().length <= 2) {
-    errors.name = 'To Short';
-  }
+  // if (name && name.toString().length <= 2) {
+  //   errors.name = 'To Short';
+  // }
   return errors;
 }
 
@@ -64,7 +64,7 @@ class InitForm extends Component{
             />
           </div>
           <div className='form-group'>
-            <button type='button' className='btn btn-primary' onClick={onClick}>Send</button>
+            <button type='button' className='btn btn-primary' onClick={(e) => onClick(e, this.props.initialValues)}>Send</button>
           </div>
       </form>
     )
